@@ -2,7 +2,9 @@
   "name": "ts-react-template",
   "version": "1.0.0",
   "description": "",
+  "main": "dist/main.js",
   "scripts": {
+    "start": "electron .",
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch"
   },
