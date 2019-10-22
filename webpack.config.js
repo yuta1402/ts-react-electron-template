@@ -34,10 +34,13 @@ const mainConfig = {
 };
 
 const rendererConfig = {
-  entry: "./src/renderer/index.tsx",
+  target: "electron-renderer",
+  entry: {
+    index: "./src/renderer/index.tsx"
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "index.js"
+    filename: "[name].js"
   },
   module: {
     rules: [
