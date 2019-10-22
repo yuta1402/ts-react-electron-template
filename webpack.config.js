@@ -44,14 +44,6 @@ module.exports = {
   watchOptions: {
     poll: true
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, "dist"),
-    host: "0.0.0.0",
-    disableHostCheck: true,
-    watchContentBase: true,
-    hot: false,
-    inline: true
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html")
