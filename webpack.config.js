@@ -2,8 +2,39 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = {
-  entry: "./src/index.tsx",
+const mainConfig = {
+  target: "electron-main",
+  node: {
+    __dirname: false,
+    __filename: false
+  },
+  entry: {
+    main: "./src/main/main.ts"
+  },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js"
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loaders: "ts-loader"
+      }
+    ]
+  },
+  devtool: "source-map",
+  watchOptions: {
+    poll: true
+  }
+};
+
+const rendererConfig = {
+  entry: "./src/renderer/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js"
@@ -53,3 +84,5 @@ module.exports = {
     })
   ]
 };
+
+module.exports = [mainConfig, rendererConfig];
